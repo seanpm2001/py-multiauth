@@ -2,6 +2,8 @@
 
 # pylint: disable=missing-docstring, too-few-public-methods
 
+from typing import Any
+
 from multiauth.types.http import HTTPMethod
 from multiauth.types.main import Token
 
@@ -25,7 +27,7 @@ class MultiAuthBase:
         username: str,
         method: HTTPMethod,
         headers: dict[str, str],
-        formatted_payload: str,
+        formatted_payload: Any,
     ) -> dict[str, str]:
 
         raise NotImplementedError

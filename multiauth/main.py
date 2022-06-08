@@ -1,5 +1,7 @@
 """Manage Client auth flow."""
 
+from typing import Any
+
 import time
 
 from multiauth.config import PY_MULTIAUTH_LOGGER as logger
@@ -44,7 +46,7 @@ class MultiAuth(MultiAuthBase):
         username: str,
         method: HTTPMethod,
         headers: dict[str, str],
-        formatted_payload: str,\
+        formatted_payload: Any,
     ) -> dict[str, str]:
         """Sign a payload before sending it.
 
