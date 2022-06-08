@@ -144,3 +144,6 @@ class UserBase:
 
     def get_credentials(self) -> tuple[str, str]:
         raise NotImplementedError()
+
+    def to_dict(self) -> dict[str, Any]:
+        raise NotImplementedError()

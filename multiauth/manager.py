@@ -150,6 +150,21 @@ class User(UserBase):
 
         return self.credentials['username'], self.credentials['password']
 
+    def to_dict(self) -> dict[str, Any]:
+        """Get user as dict."""
+
+        return {
+            'auth_schema': self.auth_schema,
+            'auth_tech': self.auth_tech,
+            'auth_type': self.auth_type,
+            'credentials': self.credentials,
+            'token': self.token,
+            'refresh_token': self.refresh_token,
+            'expires_in': self.expires_in,
+            'expired_token': self.expired_token,
+            'token_info': self.token_info,
+        }
+
 
 class UserManager:
 
