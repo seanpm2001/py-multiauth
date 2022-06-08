@@ -42,11 +42,23 @@ class User(UserBase):
 
         return self._auth_schema
 
+    @auth_schema.setter
+    def auth_schema(self, value: str | None) -> None:
+        """Set auth schema."""
+
+        self._auth_schema = value
+
     @property
     def auth_tech(self) -> AuthTech:
         """Get auth tech."""
 
         return self._auth_tech
+
+    @auth_tech.setter
+    def auth_tech(self, value: AuthTech) -> None:
+        """Set auth tech."""
+
+        self._auth_tech = value
 
     @property
     def auth_type(self) -> AuthType | None:
@@ -65,6 +77,12 @@ class User(UserBase):
         """Get credentials."""
 
         return self._credentials
+
+    @credentials.setter
+    def credentials(self, value: dict[str, Any]) -> None:
+        """Set credentials."""
+
+        self._credentials = value
 
     @property
     def expired_token(self) -> Token | None:
