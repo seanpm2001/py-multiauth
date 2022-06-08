@@ -10,15 +10,20 @@ from multiauth.types.main import Token
 
 class MultiAuthBase:
 
+    _manager: Any
     _headers: dict[str, dict]
     _schemas: dict
+
+    @property
+    def headers(self) -> dict[str, dict]:
+        raise NotImplementedError()
 
     @property
     def users(self) -> dict:
         raise NotImplementedError()
 
     @property
-    def headers(self) -> dict[str, dict]:
+    def schemas(self) -> dict:
         raise NotImplementedError()
 
     def sign(

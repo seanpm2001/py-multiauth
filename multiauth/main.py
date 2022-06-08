@@ -24,8 +24,14 @@ class MultiAuth(MultiAuthBase):
         """Initialize the Auth manager."""
 
         self._manager: UserManager = UserManager(users)
-        self._schemas = schemas
         self._headers: dict[str, dict] = {}
+        self._schemas = schemas
+
+    @property
+    def headers(self) -> dict[str, dict]:
+        """Fetch all headers of the internal manager."""
+
+        return self._headers
 
     @property
     def users(self) -> dict[str, User]:
@@ -34,10 +40,10 @@ class MultiAuth(MultiAuthBase):
         return self._manager.users
 
     @property
-    def headers(self) -> dict[str, dict]:
-        """Fetch all headers of the internal manager."""
+    def schemas(self) -> dict:
+        """Fetch internal schemas."""
 
-        return self._headers
+        return self._schemas
 
     def sign(
         self,
