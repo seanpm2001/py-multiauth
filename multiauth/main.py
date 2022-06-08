@@ -1,8 +1,7 @@
 """Manage Client auth flow."""
 
-from typing import Any
-
 import time
+from typing import Any
 
 from multiauth.config import PY_MULTIAUTH_LOGGER as logger
 from multiauth.handlers import auth_handler, reauth_handler
