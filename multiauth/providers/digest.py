@@ -10,10 +10,10 @@ import requests
 
 from multiauth.config import PY_MULTIAUTH_LOGGER as logger
 from multiauth.helpers import hash_calculator
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.http import HTTPMethod
 from multiauth.types.main import AuthConfigDigest, AuthDigestChallenge, AuthHashAlgorithmDigest, AuthResponse, AuthTech
-from multiauth.user_manager import User
 
 # from escape_cli.common.user import USER_MANAGER
 

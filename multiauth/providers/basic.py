@@ -2,8 +2,8 @@
 
 import base64
 
+from multiauth.manager import User
 from multiauth.types.main import AuthResponse, AuthTech
-from multiauth.user_manager import User
 
 
 def basic_authenticator(user: User, schema: dict) -> AuthResponse:

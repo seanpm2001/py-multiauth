@@ -1,10 +1,10 @@
 """Parse a response to extract auth credentials."""
 
+from multiauth.manager import User
 from multiauth.providers import apikey_authenticator, aws_authenticator, aws_reauthenticator, basic_authenticator, digest_authenticator, graphql_authenticator
 from multiauth.providers import manual_authenticator, oauth_authenticator, oauth_reauthenticator, rest_authenticator
 from multiauth.types.http import HTTPMethod
 from multiauth.types.main import AuthResponse, AuthTech
-from multiauth.user_manager import User
 
 
 # pylint: disable=no-else-return, too-many-return-statements

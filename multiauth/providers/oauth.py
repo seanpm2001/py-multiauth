@@ -5,11 +5,11 @@ import time
 from authlib.integrations.requests_client import OAuth2Session  # type: ignore[import]
 
 from multiauth.helpers import authentication_portal, token_endpoint_auth_method
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.http import Location
 from multiauth.types.main import AuthResponse, AuthTech
 from multiauth.types.providers.oauth import AuthConfigOAuth, AuthOAuthGrantType, AuthOAuthlocation, AuthOAuthResponse
-from multiauth.user_manager import User
 
 
 def extract_oauth_token(user: User, auth_config: AuthConfigOAuth, oauth_response: dict) -> AuthResponse:

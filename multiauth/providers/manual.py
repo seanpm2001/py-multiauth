@@ -2,9 +2,9 @@
 
 from typing import Any, cast
 
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.main import AuthResponse, AuthTech
-from multiauth.user_manager import User
 
 
 def manual_authenticator(user: User) -> AuthResponse:

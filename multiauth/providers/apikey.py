@@ -2,10 +2,10 @@
 
 from typing import cast
 
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.http import Location
 from multiauth.types.main import AuthConfigApiKey, AuthResponse, AuthTech
-from multiauth.user_manager import User
 
 
 def apikey_config_parser(schema: dict) -> AuthConfigApiKey:

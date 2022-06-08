@@ -12,11 +12,11 @@ import jwt
 from pycognito.aws_srp import AWSSRP  # type: ignore[import]
 
 from multiauth.helpers import get_secret_hash
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.http import HTTPMethod, Location
 from multiauth.types.main import AuthAWSType, AuthResponse, AuthTech
 from multiauth.types.providers.aws import AuthConfigAWS, AuthHashalgorithmHawkandAWS
-from multiauth.user_manager import User
 
 
 def aws_check_type(user: User, schema: dict) -> AuthAWSType:

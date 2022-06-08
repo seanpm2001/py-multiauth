@@ -6,9 +6,9 @@ import pytest
 import requests
 from pytest_mock import MockerFixture
 
+from multiauth.manager import User
 from multiauth.providers.basic import basic_authenticator
 from multiauth.types.main import AuthTech
-from multiauth.user_manager import User
 
 
 @pytest.fixture

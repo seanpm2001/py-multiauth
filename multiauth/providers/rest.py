@@ -6,10 +6,10 @@ import jwt
 import requests
 
 from multiauth.helpers import extract_token
+from multiauth.manager import User
 from multiauth.types.errors import AuthenticationError
 from multiauth.types.main import AuthResponse, AuthTech
 from multiauth.types.providers.rest import AuthConfigRest
-from multiauth.user_manager import User
 
 # from escape_cli.common.user import USER_MANAGER
 
