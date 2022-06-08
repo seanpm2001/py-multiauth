@@ -41,7 +41,6 @@
         "**/.github": true,
         "**/.vscode": true,
         ".*": true,
-        "*.md": true,
         "*.json": true,
         "LICENSE": true,
         "*.js": true,
