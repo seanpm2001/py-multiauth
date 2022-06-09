@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 env:
   MODULE_NAME: multiauth
-  MIN_TEST_COV: 0
+  MIN_TEST_COV: 30
 
 jobs:
   CI:
