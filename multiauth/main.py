@@ -84,6 +84,8 @@ class MultiAuth(MultiAuthBase):
         if auth_response and isinstance(auth_response, dict):
             self._headers[username] = auth_response['headers']
             logger.info('Authentication Successful')
+        else:
+            self._headers[username] = {}
 
         return self._headers[username], username
 
