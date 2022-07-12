@@ -46,6 +46,10 @@ def generate_authentication_mutation(user: User, auth_config: AuthConfigGraphQl,
         # Here we start forming the Mutation string
         # Here we have to take the case if refresh is true
         if refresh:
+            if auth_config['refresh_mutation_name'] is None:
+                raise AuthenticationError('Configuration file error. Missing refresh_mutation_name')
+            
+            auth_config = cast(str, auth_config['refresh_mutation_name'])
             if refresh_field:
                 graphql_query = 'mutation {' + auth_config['refresh_mutation_name'] + arguments + '{ \n'
             else:
@@ -136,6 +140,7 @@ def graphql_auth_attach(user: User, auth_config: AuthConfigGraphQl) -> AuthRespo
     else:
         data = {'query': graphql_query['graphql_query'], 'variables': graphql_query['graphql_variables']}
 
+    print(data)
     # Now we need to send the request
     response = requests.request(auth_config['method'], auth_config['url'], json=data)
 
@@ -301,7 +306,7 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
             })
 
     # Now fetch the token and create the Authentication Response
-    auth_response, refresh_token = extract_token(response, AuthTech.REST, headers, auth_config['refresh_field_name'])
+    auth_response, refresh_token_result = extract_token(response, AuthTech.REST, headers, auth_config['refresh_field_name'])
 
     token = auth_response['headers'][next(iter(headers))].split(' ')[1]
 
@@ -317,7 +322,6 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
     # Add the token and the expiry time to the user manager in order to be accessed by other parts of the program
     user.set_token(token, expiry_time)
 
-    user.refresh_token = refresh_token
+    user.refresh_token = refresh_token_result
 
     return auth_response
-    
