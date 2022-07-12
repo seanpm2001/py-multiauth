@@ -29,7 +29,7 @@ def format_arguments(credentials: dict) -> str:
 
     return arguments[:-1]
 
-
+#pylint: disable=line-too-long
 def generate_authentication_mutation(user: User, auth_config: AuthConfigGraphQl, credentials: dict[str, Any] | None = None, refresh: bool = False, refresh_field: bool = True) -> dict:
     """Generate the graphQL query."""
 
@@ -205,7 +205,7 @@ def graphql_auth_attach(user: User, auth_config: AuthConfigGraphQl) -> AuthRespo
 
     # Add the token and the expiry time to the user manager in order to be accessed by other parts of the program
     user.set_token(token, expiry_time)
-    
+
     user.refresh_token = refresh_token
 
     return auth_response
@@ -230,11 +230,11 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
 
     # Reparse the configuration
     auth_config = graphql_config_parser(schema)
-    
+
     # Now we have to generate the graphQL query that we need to send
     # To do that we have to generate a dictionary
     credentials: dict = {auth_config['refresh_field_name']: refresh_token}
-    
+
     # Now we do the same thing we do in the function above
     # First we have to generate the graphQL query that we need to send
     graphql_query = generate_authentication_mutation(user, auth_config, credentials, refresh = True, refresh_field = auth_config['refresh_field'])
@@ -316,7 +316,7 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
 
     # Add the token and the expiry time to the user manager in order to be accessed by other parts of the program
     user.set_token(token, expiry_time)
-    
+
     user.refresh_token = refresh_token
 
     return auth_response
