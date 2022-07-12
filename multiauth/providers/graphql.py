@@ -29,8 +29,14 @@ def format_arguments(credentials: dict) -> str:
 
     return arguments[:-1]
 
-#pylint: disable=line-too-long
-def generate_authentication_mutation(user: User, auth_config: AuthConfigGraphQl, credentials: dict[str, Any] | None = None, refresh: bool = False, refresh_field: bool = True) -> dict:
+
+def generate_authentication_mutation(
+    user: User,
+    auth_config: AuthConfigGraphQl,
+    credentials: dict[str, Any] | None = None,
+    refresh: bool = False,
+    refresh_field: bool = True,
+) -> dict:
     """Generate the graphQL query."""
 
     # Take the credentials from the users
@@ -221,11 +227,12 @@ def graphql_authenticator(user: User, schema: dict) -> AuthResponse:
     auth_config = graphql_config_parser(schema)
     return graphql_auth_attach(user, auth_config)
 
-def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> AuthResponse:
-    """This function is a wrapper function that implements the GraphQL reauthentication schema
 
-    It takes the user information, the schema information, and the refresh token and attempts to reauthenticate by sending the refresh token to a muatation
-    and receiving back an access token and a refresh token.
+def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> AuthResponse:
+    """This function is a wrapper function that implements the GraphQL reauthentication schema.
+
+    It takes the user information, the schema information, and the refresh token and attempts to reauthenticate by sending the refresh token to a muatation and
+    receiving back an access token and a refresh token.
     """
 
     # Reparse the configuration
@@ -237,7 +244,7 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
 
     # Now we do the same thing we do in the function above
     # First we have to generate the graphQL query that we need to send
-    graphql_query = generate_authentication_mutation(user, auth_config, credentials, refresh = True, refresh_field = auth_config['refresh_field'])
+    graphql_query = generate_authentication_mutation(user, auth_config, credentials, refresh=True, refresh_field=auth_config['refresh_field'])
     data: dict[Any, Any]
 
     # Create the payload
@@ -320,4 +327,3 @@ def graphql_reauthenticator(user: User, schema: dict, refresh_token: str) -> Aut
     user.refresh_token = refresh_token
 
     return auth_response
-    
