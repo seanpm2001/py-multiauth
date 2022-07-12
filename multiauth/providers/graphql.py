@@ -55,7 +55,7 @@ def generate_authentication_mutation(
             if auth_config['refresh_mutation_name'] is None:
                 raise AuthenticationError('Configuration file error. Missing refresh_mutation_name')
 
-            if refresh_field and auth_config['refresh_muation_name'] is not None:
+            if refresh_field and auth_config['refresh_mutation_name'] is not None:
                 graphql_query = 'mutation {' + auth_config['refresh_mutation_name'] + arguments + '{ \n'
             else:
                 if auth_config['refresh_mutation_name'] is not None:
