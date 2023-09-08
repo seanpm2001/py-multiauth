@@ -14,11 +14,11 @@
 
 ---
 
-{% for parameter_name, auth_property in auth_parameter[0][auth_name].items() %}
+{% for parameter_name, auth_property in auth_parameter[0][auth_name].items() -%}
 
-{% if not auth_property["optional"] %}
+{% if not auth_property["optional"] -%}
 
-{% if auth_property["enum"] %}
+{% if auth_property["enum"] -%}
 
 - {{ auth_property["name"] }} (`{{ parameter_name }}`): {{auth_property["description"]}}. The values that this parameter can take are:
 
